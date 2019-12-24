@@ -47,7 +47,7 @@ def slack_chatme(request):
             message_to_the_chatme_is_sent_to_url = 'https://admin.chatme.ai/connector/webim/webim_message/' \
                                                    'sH0knsK1jJt8YPqV-iU04A/bot_api_webhook'
             header_slack = {
-                "Authorization": "Bearer xoxb-870665549127-863766108834-bOFW13m1CYe0ei8LkUq060kr"}
+                "Authorization": "Bearer xoxb-870665549127-863766108834-BcKZnwkn3JSMSsN8UFrKuHLn"}
             header_chatme = {"Content-type": "application/json"}
             event = data_dict['event']
             channel = event['channel']
@@ -58,12 +58,14 @@ def slack_chatme(request):
                                        }
             response_chatme = send_request(message_to_the_chatme_is_sent_to_url, body_request_for_chatme,
                                            header_chatme)
+            print('response_chatme = ', response_chatme.json())
             data_dict_from_chatme = to_extract_data_dict_from_response(response_chatme)
             text_from_chatme = to_extract_text_from_data_dict_from_chatme(data_dict_from_chatme)
             body_request_for_slack = {"channel": channel,
                                       "text": text_from_chatme,
                                       }
-            send_request(message_to_the_slack_is_sent_to_url, body_request_for_slack, header_slack)
+            response_slack = send_request(message_to_the_slack_is_sent_to_url, body_request_for_slack, header_slack)
+            print('response_slack = ', response_slack.json())
             response = HttpResponse(status=204)
         return response
 
