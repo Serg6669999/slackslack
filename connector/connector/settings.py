@@ -25,7 +25,7 @@ SECRET_KEY = 'qn78$%ky@2f$++j=fa14e_xt7!7)n^5#ovdh1(uk3mlt5rkqxm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '6b473ddc.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', 'servicechatme.pythonanywhere.com']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
